@@ -325,8 +325,6 @@ async function storeProducts (req,res,next) {
   console.log('KJRiPJjvSs2OyxjK2LsBRw');
     //Let's search!
     try {
-         // here we are forcing an index refresh, otherwise we will not
-    // get any result in the consequent search
         await client.indices.refresh({ index: 'product-details' })
         const searchQuery =  req.body.query;
         console.log(searchQuery)
@@ -375,5 +373,6 @@ router.post('/searchProduct',productSearch,(req, res) =>{
   console.log("response sent")
   
 });
+
 router.post('registerShop',run);
 module.exports = router;
